@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/loginWaOne//_next/:path+",
+        "destination": "/loginWaOne/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
