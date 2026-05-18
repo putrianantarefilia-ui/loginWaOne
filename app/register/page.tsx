@@ -35,17 +35,10 @@ export default function RegisterPage() {
           <img
             alt="People connecting through technology"
             className="absolute inset-0 w-full h-full object-cover"
-            src="https://gwsmedika.id/_next/image?url=https%3A%2F%2Fstatic.gwsmedika.id%2Farticle%2F01e32caa-d389-4463-be10-8a19d358ba9f%2Fimages%2F428d365b-014e-4381-8a76-f31c62416fcf.jpg&w=1200&q=100g"
+            src="baground.jpg"
           />
-          <div className="absolute inset-0 whatsapp-overlay"></div>
+          <div className="absolute inset-0 bg-green-600/30 mix-blend-multiply"></div>
           <div className="relative z-10 p-margin-base text-center max-w-md">
-            <div className="mb-gutter inline-flex items-center justify-center w-20 h-20 bg-surface-container-lowest rounded-xl shadow-lg">
-              <MaterialIcon
-                name="chat_bubble"
-                filled
-                className="text-primary text-[48px]"
-              />
-            </div>
             <h1 className="font-headline-lg text-headline-lg text-surface-container-lowest mb-stack-sm italic">
               Hello from Wa One
             </h1>
@@ -60,7 +53,7 @@ export default function RegisterPage() {
           <div className="w-full max-w-md space-y-gutter">
 
             {/* Logo Section - Centered */}
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-1">
               <img
                 src="logo.jpg"
                 alt="Wa One Logo"
@@ -192,6 +185,18 @@ export default function RegisterPage() {
               >
                 Register
               </button>
+              {/* Link kembali ke login */}
+              <div className="text-center mt-4">
+                <p className="text-sm text-gray-600">
+                  Already have an account?{" "}
+                  <Link
+                    href="/login"
+                    className="text-primary font-bold"
+                  >
+                    Go back to login page
+                  </Link>
+                </p>
+              </div>
             </form>
           </div>
         </section>
