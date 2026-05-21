@@ -35,7 +35,7 @@ export default function RegisterPage() {
           <img
             alt="People connecting through technology"
             className="absolute inset-0 w-full h-full object-cover"
-            src="/baground.jpg"
+            src="baground.jpg"
           />
           <div className="absolute inset-0 bg-green-600/30 mix-blend-multiply"></div>
           <div className="relative z-10 p-margin-base text-center max-w-md">
@@ -55,7 +55,7 @@ export default function RegisterPage() {
             {/* Logo Section - Centered */}
             <div className="flex justify-center mb-1">
               <img
-                src="/logo.jpg"
+                src="logo.jpg"
                 alt="Wa One Logo"
                 className="h-12 w-auto object-contain"
               />
