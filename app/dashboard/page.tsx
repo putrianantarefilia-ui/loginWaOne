@@ -13,7 +13,7 @@ export default function DashboardPage() {
         {/* Logo Section */}
         <div className="flex items-center gap-3 px-4 mb-8">
           <div className="relative w-10 h-10 bg-white rounded-xl overflow-hidden flex items-center justify-center shadow-lg">
-            <Image src="/logo.jpg" alt="Logo" fill className="object-contain p-1" />
+            <Image src="/loginWaOne/logo.jpg" alt="Logo" fill className="object-contain p-1" />
           </div>
           <div>
             <h1 className="text-xl font-black text-white leading-tight">Wa One</h1>
