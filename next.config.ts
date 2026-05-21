@@ -2,8 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
-  // basePath: '/loginWaOne',
-  // assetPrefix: '/loginWaOne/',
+  basePath: '/loginWaOne',
+  assetPrefix: '/loginWaOne/',
   images: {
     unoptimized: true,
     remotePatterns: [
