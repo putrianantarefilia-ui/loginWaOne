@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function DashboardPage() {
   return (
@@ -14,7 +15,7 @@ export default function DashboardPage() {
         <div className="p-6 flex items-center gap-3">
           <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden relative">
             <Image
-              src="/logo.jpg"
+              src="/loginWaOne/logo.jpg"
               alt="Wa One Logo"
               fill
               className="object-contain p-1"
@@ -38,32 +39,37 @@ export default function DashboardPage() {
 
         {/* Nav Links */}
         <nav className="flex-1 px-4 space-y-2">
-          <a className="flex items-center gap-3 bg-white/10 text-[#25D366] p-3 rounded-xl font-semibold" href="#">
+          <Link className="flex items-center gap-3 bg-white/10 text-[#25D366] p-3 rounded-xl font-semibold" href="/dashboard">
             <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
             </svg>
             Overview
-          </a>
+          </Link>
 
           {[
             {
               label: "Devices",
+              href: "/devices",
               icon: <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />,
             },
             {
               label: "Contacts",
+              href: "#",
               icon: <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />,
             },
             {
               label: "Campaign",
+              href: "#",
               icon: <path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />,
             },
             {
               label: "Forum",
+              href: "#",
               icon: <path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />,
             },
             {
               label: "Settings",
+              href: "#",
               icon: (
                 <>
                   <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
@@ -71,13 +77,13 @@ export default function DashboardPage() {
                 </>
               ),
             },
-          ].map(({ label, icon }) => (
-            <a key={label} className="flex items-center gap-3 text-white/70 hover:text-white p-3 rounded-xl transition-colors" href="#">
+          ].map(({ label, href, icon }) => (
+            <Link key={label} className="flex items-center gap-3 text-white/70 hover:text-white p-3 rounded-xl transition-colors" href={href}>
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 {icon}
               </svg>
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
 
