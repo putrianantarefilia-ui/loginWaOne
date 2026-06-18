@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ScanQrCode } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 interface Device {
   id: string;
@@ -16,6 +17,7 @@ interface Device {
 }
 
 export default function DevicesPage() {
+  const pathname = usePathname();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedDevices, setSelectedDevices] = useState<string[]>([]);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -164,7 +166,10 @@ export default function DevicesPage() {
 
           <Link
             href="/devices"
-            className="flex items-center gap-3 bg-white/10 text-[#25D366] p-3 rounded-xl font-semibold"
+            className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === "/devices"
+                ? "bg-white/10 text-[#25D366] font-semibold"
+                : "text-white/70 hover:text-white"
+              }`}
           >
             <svg
               className="h-5 w-5"
@@ -183,7 +188,7 @@ export default function DevicesPage() {
           </Link>
 
           <Link
-            href="#"
+            href="/contacts"
             className="flex items-center gap-3 text-white/70 hover:text-white p-3 rounded-xl transition-colors"
           >
             <svg
@@ -201,6 +206,30 @@ export default function DevicesPage() {
               />
             </svg>
             Contacts
+          </Link>
+
+          <Link
+            href="/groups"
+            className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === "/groups"
+              ? "bg-white/10 text-[#25D366] font-semibold"
+              : "text-white/70 hover:text-white"
+              }`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+            Groups
           </Link>
 
           <Link
