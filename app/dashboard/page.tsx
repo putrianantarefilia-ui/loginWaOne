@@ -42,8 +42,8 @@ export default function DashboardPage() {
           <Link
             href="/dashboard"
             className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === "/dashboard"
-                ? "bg-white/10 text-[#25D366] font-semibold"
-                : "text-white/70 hover:text-white"
+              ? "bg-white/10 text-[#25D366] font-semibold"
+              : "text-white/70 hover:text-white"
               }`}
           >
             <svg
@@ -76,12 +76,12 @@ export default function DashboardPage() {
             {
               label: "Campaign",
               href: "#",
-              icon: <path d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />,
+              icon: <path d="M11 5.882V19.24a1 1 0 001.447.894l4.105-2.053a1 1 0 011.342.447l.894 1.789A1 1 0 0020.684 21H21a1 1 0 001-1v-5.684a1 1 0 00-.553-.894l-8-4A1 1 0 0012 10V5a1 1 0 00-1-1H5a1 1 0 00-1 1v10a1 1 0 001 1h6a1 1 0 001-1v-4.118z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />,
             },
             {
               label: "Forum",
               href: "#",
-              icon: <path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />,
+              icon: <path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />,
             },
             {
               label: "Settings",

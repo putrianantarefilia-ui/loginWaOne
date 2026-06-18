@@ -23,6 +23,7 @@ export default function DevicesPage() {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showQrModal, setShowQrModal] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const [devices, setDevices] = useState<Device[]>([
     {
@@ -151,7 +152,10 @@ export default function DevicesPage() {
         <nav className="flex-1 px-4 space-y-2">
           <Link
             href="/dashboard"
-            className="flex items-center gap-3 text-white/70 hover:text-white p-3 rounded-xl transition-colors"
+            className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === "/dashboard"
+              ? "bg-white/10 text-[#25D366] font-semibold"
+              : "text-white/70 hover:text-white"
+              }`}
           >
             <svg
               className="h-5 w-5"
@@ -167,8 +171,8 @@ export default function DevicesPage() {
           <Link
             href="/devices"
             className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === "/devices"
-                ? "bg-white/10 text-[#25D366] font-semibold"
-                : "text-white/70 hover:text-white"
+              ? "bg-white/10 text-[#25D366] font-semibold"
+              : "text-white/70 hover:text-white"
               }`}
           >
             <svg
@@ -189,7 +193,10 @@ export default function DevicesPage() {
 
           <Link
             href="/contacts"
-            className="flex items-center gap-3 text-white/70 hover:text-white p-3 rounded-xl transition-colors"
+            className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === "/contacts"
+              ? "bg-white/10 text-[#25D366] font-semibold"
+              : "text-white/70 hover:text-white"
+              }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -327,7 +334,7 @@ export default function DevicesPage() {
 
         {/* Top Navbar */}
         <header className="h-20 bg-white border-b flex items-center justify-between px-8">
-          <h2 className="text-2xl font-bold text-[#005C4B]">Overview</h2>
+          <h2 className="text-2xl font-bold text-[#005C4B]">Devices</h2>
           <div className="flex items-center gap-6">
 
             {/* Search */}
@@ -398,7 +405,7 @@ export default function DevicesPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-gray-50 border-b border-gray-100">
+                    <tr className="bg-[#F8FAFC] border-b">
                       <th className="p-4 w-12 text-center">
                         <input
                           type="checkbox"
@@ -419,7 +426,7 @@ export default function DevicesPage() {
                         Device Name
                       </th>
 
-                      <th className="p-4 text-xs font-bold text-gray-400 uppercase">
+                      <th className="p-4 text-center text-xs font-bold text-gray-400 uppercase">
                         Status
                       </th>
 
@@ -440,7 +447,7 @@ export default function DevicesPage() {
                       return (
                         <tr
                           key={device.id}
-                          className="hover:bg-gray-50 transition-colors"
+                          className="h-16 hover:bg-gray-50 transition-colors"
                         >
                           <td className="p-4 text-center">
                             <input
@@ -453,7 +460,7 @@ export default function DevicesPage() {
                           </td>
 
                           {/* ACTION */}
-                          <td className="p-4 w-[120px]">
+                          <td className="px-6 py-4 w-[100px]">
                             <div className="flex items-center gap-2">
                               {/* Edit */}
                               <button className="p-2 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-[#005C4B] transition-colors">
@@ -516,23 +523,25 @@ export default function DevicesPage() {
                           </td>
 
                           <td className="p-4">
-                            {device.status === "Connected" && (
-                              <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-[#DCF8C6] text-[#075E54]">
-                                Connected
-                              </span>
-                            )}
+                            <div className="flex justify-center">
+                              {device.status === "Connected" && (
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-[#DCF8C6] text-[#075E54]">
+                                  Connected
+                                </span>
+                              )}
 
-                            {device.status === "Disconnected" && (
-                              <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-red-100 text-red-600">
-                                Disconnected
-                              </span>
-                            )}
+                              {device.status === "Disconnected" && (
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-red-100 text-red-600">
+                                  Disconnected
+                                </span>
+                              )}
 
-                            {device.status === "Linking" && (
-                              <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-blue-700">
-                                Linking
-                              </span>
-                            )}
+                              {device.status === "Linking" && (
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-blue-700">
+                                  Linking
+                                </span>
+                              )}
+                            </div>
                           </td>
 
                           <td className="p-4 text-sm text-gray-500">
@@ -550,7 +559,7 @@ export default function DevicesPage() {
               </div>
 
               {/* Pagination */}
-              <div className="p-4 border-t border-gray-100 flex items-center justify-between bg-gray-50">
+              <div className="px-6 py-4 border-t bg-white flex items-center justify-between">
                 <span className="text-xs font-bold text-gray-400">
                   Showing 1-{filteredDevices.length} of {devices.length} devices
                 </span>
@@ -610,7 +619,13 @@ export default function DevicesPage() {
 
                   <input
                     type="text"
+                    inputMode="numeric"
                     placeholder="08xxxxxxxxxxx"
+                    value={phoneNumber}
+                    onChange={(e) => {
+                      const numbersOnly = e.target.value.replace(/\D/g, "");
+                      setPhoneNumber(numbersOnly);
+                    }}
                     className="w-full border border-gray-300 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-[#25D366]"
                   />
                 </div>
