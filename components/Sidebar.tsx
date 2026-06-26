@@ -69,17 +69,22 @@ export default function Sidebar() {
           },
           {
             label: "Campaign",
-            href: "#",
+            href: "/campaign",
             icon: <path d="M11 5.882V19.24a1 1 0 001.447.894l4.105-2.053a1 1 0 011.342.447l.894 1.789A1 1 0 0020.684 21H21a1 1 0 001-1v-5.684a1 1 0 00-.553-.894l-8-4A1 1 0 0012 10V5a1 1 0 00-1-1H5a1 1 0 00-1 1v10a1 1 0 001 1h6a1 1 0 001-1v-4.118z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />,
+            subItems: [
+              { label: "New Campaign", href: "#" },
+              { label: "History", href: "/campaign/history" },
+              { label: "Analytics", href: "#" },
+            ],
           },
           {
             label: "Forum",
-            href: "#",
+            href: "/forum",
             icon: <path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />,
           },
           {
             label: "Settings",
-            href: "#",
+            href: "/settings",
             icon: (
               <>
                 <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
@@ -87,8 +92,50 @@ export default function Sidebar() {
               </>
             ),
           },
-        ].map(({ label, href, icon }) => {
+        ].map(({ label, href, icon, subItems }) => {
           const isActive = pathname === href || pathname?.startsWith(href + "/");
+
+          if (subItems) {
+            // Expand automatically if active, or just keep it simple since we're using Next.js routing
+            return (
+              <div key={label} className="flex flex-col">
+                <Link
+                  href={subItems[1].href} // Default to history for now
+                  className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${
+                    isActive
+                      ? "bg-white/10 text-[#25D366] font-semibold border-l-4 border-[#25D366]"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    {icon}
+                  </svg>
+                  {label}
+                </Link>
+                {isActive && (
+                  <div className="ml-10 mt-1 flex flex-col gap-1">
+                    {subItems.map((sub) => {
+                      const isSubActive = pathname === sub.href;
+                      return (
+                        <Link
+                          key={sub.label}
+                          href={sub.href}
+                          className={`px-4 py-2 text-sm transition-colors ${
+                            isSubActive
+                              ? "text-[#25D366] font-bold border-l-2 border-[#25D366] bg-white/5"
+                              : "text-white/70 hover:text-white"
+                          }`}
+                        >
+                          {sub.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          }
+
           return (
             <Link
               key={label}
