@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
-
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -27,7 +27,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} bg-background text-on-background min-h-screen`}>
-        {children}
+        <ClientLayoutWrapper>
+          {children}
+        </ClientLayoutWrapper>
       </body>
     </html>
   );

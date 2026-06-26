@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
+
+
 import {
   Users,
   Plus,
@@ -43,7 +42,7 @@ interface Toast {
 }
 
 export default function GroupsPage() {
-  const pathname = usePathname();
+
 
   // --- Dummy Contacts Data (consistent with contacts page) ---
   const [contacts] = useState<Contact[]>([
@@ -325,7 +324,7 @@ export default function GroupsPage() {
   };
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-[#F8F9FA] text-[#1E293B] font-sans">
+    <>
 
       {/* ── Toast Notifications ── */}
       <div className="fixed top-5 right-5 z-50 space-y-3 pointer-events-none">
@@ -350,274 +349,6 @@ export default function GroupsPage() {
         ))}
       </div>
 
-      {/* ── Left Sidebar Navigation ── */}
-      <aside className="w-64 bg-[#005C4B] text-white flex flex-col shrink-0">
-
-        {/* Brand/Logo Header */}
-        <div className="p-6 flex items-center gap-3">
-          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden relative">
-            <Image
-              src="/loginWaOne/logo.jpg"
-              alt="Wa One Logo"
-              fill
-              className="object-contain p-1"
-            />
-          </div>
-          <div>
-            <h1 className="text-xl font-bold leading-tight">Wa One</h1>
-            <p className="text-[10px] tracking-widest uppercase opacity-70">
-              Messaging
-            </p>
-          </div>
-        </div>
-
-        {/* New Message Quick Action Button */}
-        <div className="px-4 mb-8">
-          <button className="w-full bg-[#25D366] hover:bg-green-500 text-[#004A3C] font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors">
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4v16m8-8H4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-            New Message
-          </button>
-        </div>
-
-        {/* Sidebar Nav Links */}
-        <nav className="flex-1 px-4 space-y-2">
-          <Link
-            href="/dashboard"
-            className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === "/dashboard"
-              ? "bg-white/10 text-[#25D366] font-semibold"
-              : "text-white/70 hover:text-white"
-              }`}
-          >
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-            </svg>
-            Overview
-          </Link>
-
-          <Link
-            href="/devices"
-            className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === "/devices"
-              ? "bg-white/10 text-[#25D366] font-semibold"
-              : "text-white/70 hover:text-white"
-              }`}
-          >
-            <svg
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-            Devices
-          </Link>
-
-          <Link
-            href="/contacts"
-            className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === "/contacts"
-              ? "bg-white/10 text-[#25D366] font-semibold"
-              : "text-white/70 hover:text-white"
-              }`}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.653-.084-1.287-.24-1.891M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.653.084-1.287.24-1.891m0 0a5.002 5.002 0 019.52 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM6 10a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-            Contacts
-          </Link>
-
-          <Link
-            href="/groups"
-            className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === "/groups" || pathname?.startsWith("/groups")
-              ? "bg-white/10 text-[#25D366] font-semibold"
-              : "text-white/70 hover:text-white"
-              }`}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-              />
-            </svg>
-            Groups
-          </Link>
-
-          <Link
-            href="#"
-            className="flex items-center gap-3 text-white/70 hover:text-white p-3 rounded-xl transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M11 5.882V19.24a1 1 0 001.447.894l4.105-2.053a1 1 0 011.342.447l.894 1.789A1 1 0 0020.684 21H21a1 1 0 001-1v-5.684a1 1 0 00-.553-.894l-8-4A1 1 0 0012 10V5a1 1 0 00-1-1H5a1 1 0 00-1 1v10a1 1 0 001 1h6a1 1 0 001-1v-4.118z"
-              />
-            </svg>
-            Campaign
-          </Link>
-
-          <Link
-            href="#"
-            className="flex items-center gap-3 text-white/70 hover:text-white p-3 rounded-xl transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-              />
-            </svg>
-            Forum
-          </Link>
-
-          <Link
-            href="#"
-            className="flex items-center gap-3 text-white/70 hover:text-white p-3 rounded-xl transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.591 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.591c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.591c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.591 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.591-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.591c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.591c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.591-1.065z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-            Settings
-          </Link>
-        </nav>
-
-        {/* Logout Bottom Action */}
-        <div className="p-6">
-          <button className="flex items-center gap-3 text-red-400 font-bold hover:text-red-300 transition-colors">
-            <LogOut size={18} />
-            Logout
-          </button>
-        </div>
-      </aside>
-
-      {/* ── Main Panel Canvas ── */}
-      <main className="flex-1 h-full flex flex-col overflow-hidden">
-
-        {/* Header Ribbon */}
-        <header className="h-20 bg-white border-b flex items-center justify-between px-8">
-          <div className="flex items-center gap-3">
-            <h2 className="text-2xl font-bold text-[#005C4B] pl-1">
-              Group Contacts
-            </h2>
-          </div>
-
-          <div className="flex items-center gap-6">
-
-            {/* Search Analytics input bar placeholder */}
-            <div className="relative w-64">
-              <span className="absolute inset-y-0 left-0 pl-3 flex items-center">
-                <Search size={16} className="text-gray-400" />
-              </span>
-              <input
-                className="block w-full pl-10 pr-3 py-2 border-none bg-gray-100 rounded-full text-sm placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-[#005C4B]"
-                placeholder="Search groups..."
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-
-            {/* Notification Alert Bell */}
-            <button className="relative text-gray-600 hover:text-[#005C4B] transition-colors">
-              <Bell size={20} />
-              <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
-            </button>
-
-            {/* User Profile Info */}
-            <div className="flex items-center gap-3">
-              <div className="text-right">
-                <p className="text-sm font-bold text-gray-800">
-                  Refilia Putri Ananta
-                </p>
-                <p className="text-[10px] text-gray-500">
-                  putrianantarefilia@gmail.com
-                </p>
-              </div>
-              <div className="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden relative bg-gray-200">
-                <Image
-                  src="https://lh3.googleusercontent.com/a/default-user"
-                  alt="User Avatar"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-
-          </div>
-        </header>
-
-        {/* Scrollable Layout Canvas */}
-        <div className="flex-1 overflow-y-auto p-8 [scrollbar-width:thin]">
           <div className="max-w-7xl mx-auto space-y-8">
 
             {/* Header Title Section & Stats Bento Layout */}
@@ -881,8 +612,6 @@ export default function GroupsPage() {
 
             </div>
           </div>
-        </div>
-      </main>
 
       {/* ── Add / Edit Group Modal ── */}
       {showModal && (
@@ -1064,7 +793,6 @@ export default function GroupsPage() {
           </div>
         </div>
       )}
-
-    </div>
+    </>
   );
 }
