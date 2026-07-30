@@ -90,7 +90,7 @@ export default function LoginPage() {
                 <input
                   id="phone"
                   type="tel"
-                  placeholder="08xxxxxxxxxx"
+                  placeholder="085336715855"
                   className="w-full pl-10 pr-4 py-3 rounded-lg bg-surface-container-low border-transparent focus:border-primary focus:ring-0 transition-all font-body-md"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
